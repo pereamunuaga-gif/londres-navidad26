@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Londres mágico · Cuaderno de localizaciones</title>
+<meta name="description" content="Harry Potter en Londres: localizaciones de rodaje y de los libros, rutas a pie, Studio Tour, cronología y curiosidades comprobadas">
+<meta name="theme-color" content="#0B1222">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* Cuaderno del Londres mágico: pergamino a la luz de las velas sobre azul de medianoche.
+   Mismo concepto que el Expediente Whitechapel (cabecera de periódico, cuadro de mando, mapa + ficha,
+   cinta temporal y secciones de consulta), con paleta y tipografía propias. Sin logos ni imágenes de la saga. */
+:root{
+  --night:#070B16; --night2:#0E1630; --panel:rgba(14,22,48,.82); --line:rgba(232,199,114,.2);
+  --parch:#F1E6CC; --muted:#A79F8C; --gold:#E8C772; --gold2:#B8923F; --ember:#D8664A; --teal:#7FB7B0;
+  --display:"IM Fell English SC","IM Fell English",Georgia,serif; --serif:"EB Garamond",Garamond,Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box} html,body{margin:0} html{-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{background:radial-gradient(ellipse 120% 70% at 50% -10%,#1A2752 0%,#0B1222 55%,#070B16 100%) fixed,#070B16;color:var(--parch);font-family:var(--serif);font-size:18px;line-height:1.55;-webkit-tap-highlight-color:rgba(232,199,114,.2)}
+a{color:var(--gold)} :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;touch-action:manipulation}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:radial-gradient(1.2px 1.2px at 30px 40px,#fff,transparent),radial-gradient(1px 1px at 120px 160px,#E8C772,transparent),radial-gradient(1.4px 1.4px at 220px 80px,#fff,transparent),radial-gradient(1px 1px at 300px 220px,#fff,transparent);background-size:340px 260px}
+.back{position:fixed;left:max(12px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));z-index:40;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(7,11,22,.88);border:1px solid var(--gold2);color:var(--parch);text-decoration:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+/* Cabecera */
+header.mast{padding:26px 0 0}
+.mast-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero{padding:clamp(46px,10vh,110px) 0 clamp(30px,6vh,70px);position:relative}
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:42px;height:1px;background:var(--gold)}
+.hero h1{font-size:clamp(3rem,10vw,7rem);line-height:.92;margin:18px 0;color:var(--parch);text-shadow:0 0 40px rgba(232,199,114,.18)}
+.hero h1 span{display:block;color:var(--gold);font-family:"IM Fell English",Georgia,serif;font-style:italic}
+.hero .sub{font-style:italic;color:#D6CBB2;max-width:58ch;font-size:1.15rem;margin:0}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px}
+.hero-meta div{border-left:1px solid var(--gold);padding-left:12px}
+.hero-meta b{display:block;font-family:var(--display);font-weight:400;font-size:1.45rem}
+.hero-meta span{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero-cameo{float:right;width:min(40vw,210px);margin:0 0 10px 16px;filter:drop-shadow(0 0 24px rgba(232,199,114,.25))}.hero-cameo svg{display:block;width:100%;height:auto}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:20;background:rgba(7,11,22,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;padding-top:max(8px,env(safe-area-inset-top))}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:8px 12px;border:1px solid transparent;border-radius:2px}
+nav.tabs a.on{color:#14100A;background:linear-gradient(180deg,#F0D48A,#C9A04E);box-shadow:0 0 18px rgba(232,199,114,.35)}
+section{padding:56px 0;position:relative}
+section+section::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,rgba(232,199,114,.4) 50%,var(--line) 80%,transparent)}
+.sec-head{margin-bottom:22px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3rem)}
+.sec-head h2::after{content:"";display:block;width:56px;height:2px;background:var(--ember);margin-top:12px}
+.sec-head p{margin:8px 0 0;color:var(--muted);max-width:70ch}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:8px 0 22px}
+.kpi{background:rgba(9,14,30,.92);padding:16px 18px}
+.kpi b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--gold);font-weight:400}
+.kpi span{font-size:.9rem;color:var(--muted);line-height:1.3;display:block;margin-top:6px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}} @media(max-width:480px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.alert{border:1px solid rgba(216,102,74,.55);background:rgba(216,102,74,.1);padding:14px 16px;margin:0 0 18px;display:flex;flex-direction:column;gap:6px}
+.alert b{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ember)}
+/* Panel, mapa y ficha */
+.panel{background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--line)}
+.mono{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cockpit{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px}
+@media(max-width:960px){.cockpit{grid-template-columns:1fr}}
+.seg{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line)}
+.seg button{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--muted);border:0;padding:7px 10px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button.on{background:var(--parch);color:var(--night)}
+#map{display:block;width:100%;height:auto;touch-action:manipulation}
+#map .river{fill:none;stroke:#1E3A66;stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
+#map .river2{fill:none;stroke:#3C6AA8;stroke-width:1;stroke-dasharray:3 6;opacity:.7}
+#map .lbl{font-family:var(--serif);font-style:italic;fill:#8C8676;font-size:14px}
+#map .pin{cursor:pointer}
+#map .pin circle.dot{stroke:#070B16;stroke-width:2}
+#map .pin text{font-family:var(--mono);font-size:10px;fill:#070B16;font-weight:600;pointer-events:none}
+#map .pin circle.halo{opacity:0;fill:none;stroke:var(--gold);stroke-width:2}
+#map .pin.sel circle.halo{opacity:1}
+#map .route{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:6 5;opacity:.75}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.dossier{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px}
+.dossier h3{font-size:1.75rem;line-height:1.1}
+.dossier dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:.95rem}
+.dossier dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.dossier dd{margin:0}
+.dossier p{margin:0}
+.tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:2px;display:inline-block;align-self:flex-start}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--gold2);border-radius:999px;color:var(--parch);text-decoration:none;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer}
+.btn.pri{background:var(--gold);color:var(--night);border-color:var(--gold)}
+.warnline{color:#E9A48F;font-size:.92rem}
+/* Fichas */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:9px;cursor:pointer;position:relative}
+.card:hover{border-color:rgba(232,199,114,.5)}
+.card .n{position:absolute;top:14px;right:16px;font-family:var(--display);font-size:2rem;color:rgba(232,199,114,.35);line-height:1}
+.card h3{font-size:1.35rem;line-height:1.15;padding-right:40px}
+.card .what{font-style:italic;color:#D6CBB2;font-size:.98rem}
+.card .meta{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card .cur{font-size:.92rem;color:var(--parch);border-left:2px solid var(--ember);padding-left:10px}
+.filters{margin-bottom:16px}
+/* Rutas */
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.route-c{padding:20px}
+.route-c h3{font-size:1.7rem}
+.route-c ol{margin:12px 0;padding-left:0;list-style:none;counter-reset:r;display:flex;flex-direction:column;gap:2px}
+.route-c li{counter-increment:r;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line)}
+.route-c li::before{content:counter(r);font-family:var(--display);font-size:1.4rem;color:var(--gold)}
+.route-c li small{font-family:var(--mono);font-size:.6rem;color:var(--muted);white-space:nowrap}
+.route-c .how{font-size:.92rem;color:var(--muted)}
+/* Studio y teatro */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.info{padding:20px;display:flex;flex-direction:column;gap:10px}
+.info h3{font-size:1.7rem}
+.info ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.info li::marker{color:var(--gold)}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.days div{background:rgba(9,14,30,.92);padding:10px}
+.days b{display:block;font-family:var(--display);font-size:1.25rem;color:var(--gold);font-weight:400}
+.days span{font-size:.85rem;color:var(--muted)}
+/* Cronología */
+.tlf{margin-bottom:14px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--gold2);margin-left:8px}
+.tl li{position:relative;padding:10px 0 14px 22px}
+.tl li::before{content:"";position:absolute;left:-6px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--night);border:2px solid var(--gold)}
+.tl li.story::before{border-color:var(--teal)}
+.tl .y{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--gold)}
+.tl li.story .y{color:var(--teal)}
+.tl b{display:block;font-family:var(--display);font-weight:400;font-size:1.2rem}
+.tl p{margin:2px 0 0;color:#D6CBB2;font-size:.95rem}
+/* Curiosidades */
+.curios{columns:2 320px;column-gap:28px;margin:0;padding:0;list-style:none;counter-reset:c}
+.curios li{counter-increment:c;break-inside:avoid;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);position:relative;color:#E5DAC0}
+.curios li::before{content:counter(c,upper-roman);position:absolute;left:0;top:12px;font-family:var(--display);color:var(--gold);font-size:1.05rem}
+.curios a{font-family:var(--mono);font-size:.58rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted)}
+.foot{padding:40px 0 100px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+.foot p{max-width:80ch}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.dphoto{margin:0 0 4px;border:1px solid var(--line);padding:6px;background:rgba(9,14,30,.9)}.dphoto img{display:block;width:100%;height:190px;object-fit:cover}.dphoto figcaption{font-family:var(--mono);font-size:.56rem;color:var(--muted);margin-top:5px}.dphoto a{color:inherit}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<a class="back" href="index.html#expedientes" aria-label="Volver a la app del viaje">← Londres 26</a>
+<div class="wrap">
+<header class="mast">
+  <div class="mast-top"><span>Cuaderno del Londres mágico</span><span>Navidad · XII · MMXXVI</span></div>
+  <div class="hero">
+    <div class="hero-cameo" id="heroCameo"></div><div class="eyebrow">Localizaciones · rodaje y libros</div>
+    <h1>Harry Potter<span>en Londres</span></h1>
+    <p class="sub">Dónde se rodó, qué es cada sitio en la historia y cómo encajarlo en vuestros días de Navidad: el andén de King's Cross, el Callejón Diagon de la City, el puente que destruyen los mortífagos y la entrada al Ministerio en Whitehall.</p>
+    <div class="hero-meta"><div><b>23</b><span>lugares comprobados</span></div><div><b>2</b><span>rutas a pie</span></div><div><b>14 nov – 17 ene</b><span>Hogwarts in the Snow</span></div></div>
+    
+  </div>
+</header>
+<nav class="tabs" aria-label="Secciones">
+  <a href="#cuadro" class="on">Cuadro</a><a href="#lugares">Lugares</a><a href="#rutas">Rutas</a><a href="#studio">Studio Tour</a><a href="#teatro">Teatro</a><a href="#crono">Cronología</a><a href="#curios">Curiosidades</a>
+</nav>
+
+<section id="cuadro" style="padding-top:22px">
+  <div class="kpis" id="kpis"></div>
+  <div class="alert"><b>Para reservar ya</b><span>El Studio Tour solo se visita con entrada y hora, y en Navidad se agota con semanas o meses de antelación: el mejor día es el lunes 28. Borough Market (Stoney Street) cierra del 25 al 27: haced la ruta de la City el 28 o el 29.</span></div>
+  <div class="cockpit">
+    <div class="panel">
+      <div class="panel-h"><span class="mono">Mapa del centro · posiciones reales</span><div class="seg" id="mapFilter"></div></div>
+      <svg id="map" viewBox="0 0 1000 640" role="img" aria-label="Mapa del centro de Londres con las localizaciones"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="panel"><div class="dossier" id="dossier"></div></div>
+  </div>
+</section>
+
+<section id="lugares">
+  <div class="sec-head"><h2>Los lugares</h2><p>Cada ficha dice qué fue en la película o en el libro, dónde está, cómo se visita y algo que contar al llegar. Toca una para verla en el mapa.</p></div>
+  <div class="seg filters" id="cardFilter"></div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="rutas">
+  <div class="sec-head"><h2>Dos rutas a pie</h2><p>Pensadas para salir y volver con la Elizabeth line o la Jubilee desde Custom House. Tiempos de paseo sin contar las paradas.</p></div>
+  <div class="routes" id="routes"></div>
+</section>
+
+<section id="studio">
+  <div class="sec-head"><h2>Warner Bros. Studio Tour</h2><p>Los estudios de Leavesden, donde se rodaron las ocho películas: decorados, vestuario y la maqueta de Hogwarts, en su versión nevada.</p></div>
+  <div class="two" id="studioBox"></div>
+</section>
+
+<section id="teatro">
+  <div class="sec-head"><h2>Cursed Child en el Palace Theatre</h2><p>La obra de teatro que continúa la historia diecinueve años después, en un teatro victoriano de 1891.</p></div>
+  <div class="two" id="theatreBox"></div>
+</section>
+
+<section id="crono">
+  <div class="sec-head"><h2>Cronología</h2><p>Fechas del mundo real (en dorado) y fechas de la historia ambientadas en Londres (en verde agua). Los años de la historia siguen la cronología canónica de los fans (HP Lexicon).</p></div>
+  <div class="seg tlf" id="tlFilter"></div>
+  <ul class="tl" id="timeline"></ul>
+</section>
+
+<section id="curios">
+  <div class="sec-head"><h2>Curiosidades comprobadas</h2><p>Para contar delante de cada sitio. Cada una lleva su fuente.</p></div>
+  <ol class="curios" id="curiosList"></ol>
+</section>
+
+<footer class="foot">
+  <p>Cuaderno privado del viaje a Londres de Javier, Alba, Manuel, Marta, Alfredo y Ángela (26–29 de diciembre de 2026). Datos comprobados el 23 de noviembre de 2026 en las webs oficiales del Studio Tour, del Palace Theatre y de MinaLima, y en movie-locations.com, the-magician.co.uk, Time Out, Londonist y Wikipedia. Coordenadas de OpenStreetMap. Las marcas, nombres y personajes de Harry Potter pertenecen a sus titulares; este cuaderno es un documento personal sin imágenes de la saga.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* =========================================================
+   Camafeos en perfil (dibujos propios, estilo silueta victoriana grabada):
+   Scrooge con su gorro de dormir, Jack con chistera y el cuello de la capa subido,
+   y un joven mago con gafas redondas y bufanda. No son ilustraciones oficiales de ninguna obra.
+   ========================================================= */
+const CAMEO={
+  scrooge:{t:"Ebenezer Scrooge",s:"Londres · 1843",
+    d:"M36 250 C44 228 54 210 66 198 C64 190 62 182 60 174 C54 170 50 162 52 154 C46 150 44 142 48 136 C46 128 50 120 56 116 C50 112 44 106 38 104 C32 102 28 100 24 96 C34 80 46 62 62 48 C76 36 92 30 104 32 C116 36 124 50 126 66 C128 76 130 86 128 94 C132 98 134 104 132 108 C138 116 146 126 154 138 C158 144 156 148 150 148 C146 148 143 147 140 146 C140 150 138 152 135 153 C137 155 137 157 134 158 C132 159 132 161 135 163 C141 167 147 173 150 180 C152 186 148 188 142 187 C134 186 126 188 120 192 C118 198 118 204 122 210 C132 220 144 234 152 250 Z",
+    extra:'<path d="M58 150 C64 156 66 164 64 172 M54 158 C56 164 56 170 54 176" stroke="var(--cm-bg)" stroke-width="1.3" fill="none" opacity=".7"/>'+
+      '<path d="M128 94 C110 88 86 94 64 110 C58 114 54 118 52 122" stroke="var(--cm-bg)" stroke-width="1.6" fill="none" opacity=".8"/><path d="M118 56 C96 52 70 64 44 90" stroke="var(--cm-bg)" stroke-width="1" fill="none" opacity=".45"/>'+
+      '<path d="M124 196 C112 206 104 216 100 226" stroke="var(--cm-bg)" stroke-width="1.2" fill="none" opacity=".55"/>'+
+      '<circle cx="22" cy="98" r="9" fill="var(--cm-ink)"/><path d="M16 102 l-5 7 M21 107 l-1 8 M27 105 l4 7" stroke="var(--cm-ink)" stroke-width="2.2" stroke-linecap="round"/>'},
+  jack:{t:"Jack el Destripador",s:"Whitechapel · 1888",
+    d:"M24 250 C30 226 40 208 56 196 C64 190 70 182 72 172 C66 164 62 152 62 140 C62 126 64 116 66 108 L42 106 C36 105 35 99 41 98 L68 95 L71 30 C71 24 75 22 81 22 L123 22 C129 22 133 24 133 30 L131 95 L156 98 C162 99 162 105 156 106 L130 108 C133 112 135 116 134 120 C133 122 134 124 137 126 C141 131 147 137 151 141 C152 144 149 146 145 146 L140 146 L140 152 L150 148 L157 141 C162 160 166 190 172 214 C180 230 184 240 186 250 Z",
+    extra:'<path d="M71 80 L132 82" stroke="var(--cm-accent)" stroke-width="5"/>'+
+      '<path d="M140 150 C150 168 158 196 166 226 M112 176 C116 196 120 214 118 240" stroke="var(--cm-bg)" stroke-width="1.2" fill="none" opacity=".45"/>'+
+      '<path d="M60 196 C78 204 96 204 112 196" stroke="var(--cm-bg)" stroke-width="1.2" fill="none" opacity=".45"/>'},
+  wizard:{t:"El joven mago",s:"King's Cross · andén 9¾",
+    d:"M40 250 C46 232 56 216 68 206 C68 198 70 192 72 186 C64 180 58 170 56 158 C50 156 46 150 50 144 Q40 138 48 130 Q38 120 54 116 Q46 102 64 104 Q60 88 78 92 Q80 76 96 84 Q102 70 114 82 Q124 70 130 88 Q144 84 138 100 Q150 102 140 112 C141 120 143 128 145 136 C149 143 153 150 151 154 C150 157 146 157 144 157 C145 161 143 164 140 165 C142 169 141 172 138 173 C140 178 137 183 131 185 C125 187 119 187 115 185 C115 192 117 198 120 204 C134 212 150 228 158 250 Z",
+    extra:'<circle cx="128" cy="134" r="9.5" fill="none" stroke="var(--cm-bg)" stroke-width="2.4"/><path d="M118.5 132 L80 127" stroke="var(--cm-bg)" stroke-width="2.2"/><path d="M137.5 134 L143 136" stroke="var(--cm-bg)" stroke-width="2.2"/>'+
+      '<path d="M64 206 C86 194 110 192 126 200 L132 216 C114 208 90 210 66 222 Z" fill="var(--cm-accent)"/>'+
+      '<path d="M70 218 L60 250 L80 250 L84 220 Z" fill="var(--cm-accent)"/>'+
+      '<path d="M66 210 C88 200 110 198 128 206" stroke="var(--cm-gold)" stroke-width="3" fill="none"/><path d="M64 232 L82 230 M62 242 L80 240" stroke="var(--cm-gold)" stroke-width="3.4"/>'}
+};
+let cameoN=0;
+function cameo(kind,o){
+  o=o||{}; const c=CAMEO[kind]; if(!c) return ""; const id="cm"+(++cameoN);
+  const ink=o.ink||"#2B1B12", bg=o.bg||"#F3E6C8", gold=o.gold||"#B0852F", acc=o.accent||"#8E1B1B", line=o.line||"#B79C6E";
+  return '<svg class="cameo '+(o.cls||"")+'" viewBox="0 0 200 270" role="img" aria-label="'+c.t+', silueta de perfil" style="--cm-ink:'+ink+';--cm-bg:'+bg+';--cm-gold:'+gold+';--cm-accent:'+acc+'">'+
+    '<defs><clipPath id="'+id+'c"><ellipse cx="100" cy="122" rx="80" ry="104"/></clipPath>'+
+    '<pattern id="'+id+'h" width="4" height="3.2" patternUnits="userSpaceOnUse"><path d="M0 1.6H4" stroke="'+line+'" stroke-width=".55"/></pattern>'+
+    '<radialGradient id="'+id+'g" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="'+bg+'" stop-opacity="1"/><stop offset="1" stop-color="'+bg+'" stop-opacity="0"/></radialGradient></defs>'+
+    '<ellipse cx="100" cy="122" rx="88" ry="112" fill="none" stroke="'+gold+'" stroke-width="3"/>'+
+    '<ellipse cx="100" cy="122" rx="84" ry="108" fill="none" stroke="'+gold+'" stroke-width=".8" stroke-dasharray="1.5 3"/>'+
+    '<g clip-path="url(#'+id+'c)"><rect width="200" height="270" fill="'+bg+'"/><rect width="200" height="270" fill="url(#'+id+'h)"/><ellipse cx="100" cy="112" rx="62" ry="78" fill="url(#'+id+'g)"/>'+
+    '<g transform="translate(6 -4)"><path d="'+c.d+'" fill="'+ink+'"/>'+c.extra+'</g></g>'+
+    '<ellipse cx="100" cy="122" rx="80" ry="104" fill="none" stroke="'+ink+'" stroke-width="1.4"/>'+
+    (o.label===false?'':'<path d="M28 236 L172 236 L180 248 L172 260 L28 260 L20 248 Z" fill="'+acc+'" stroke="'+gold+'" stroke-width="1.4"/>'+
+    '<text x="100" y="253" text-anchor="middle" font-family="IM Fell English SC,Georgia,serif" font-size="12.5" fill="'+bg+'" letter-spacing=".5">'+c.t+'</text>')+
+    '</svg>';
+}
+
+const THAMES=[[51.46402,-0.19887],[51.46399,-0.19319],[51.46432,-0.19017],[51.46511,-0.18739],[51.46745,-0.18298],[51.47342,-0.17902],[51.47758,-0.17777],[51.47988,-0.17538],[51.48134,-0.17228],[51.48234,-0.16696],[51.48456,-0.14967],[51.48462,-0.14624],[51.48387,-0.14059],[51.48388,-0.13737],[51.48468,-0.13286],[51.48598,-0.12932],[51.488,-0.12676],[51.49119,-0.12404],[51.49513,-0.12268],[51.50586,-0.1207],[51.50827,-0.11806],[51.5095,-0.11391],[51.50991,-0.10651],[51.50933,-0.09602],[51.50836,-0.09193],[51.50697,-0.08063],[51.505,-0.07333],[51.50245,-0.06579],[51.50167,-0.06035],[51.5028,-0.05487],[51.50793,-0.0455],[51.50837,-0.04393],[51.50862,-0.03962],[51.50808,-0.03609],[51.50644,-0.0315],[51.50406,-0.02966],[51.49467,-0.03014],[51.49303,-0.02982],[51.48943,-0.02729],[51.48748,-0.02469],[51.48539,-0.02002],[51.48477,-0.01765],[51.48452,-0.01337],[51.48474,-0.0106],[51.48581,-0.00575],[51.48768,-0.00219],[51.48932,-0.00078],[51.49266,-0.00083],[51.49834,-0.00453],[51.50146,-0.00504],[51.50324,-0.00433],[51.50494,-0.00277]];
+/* Películas y libros */
+const FILMS={p1:["La piedra filosofal","2001","#E8C772"],p2:["La cámara secreta","2002","#C9A04E"],p3:["El prisionero de Azkaban","2004","#7FB7B0"],p5:["La Orden del Fénix","2007","#8FA7D8"],p6:["El misterio del príncipe","2009","#D8664A"],p7:["Las reliquias de la Muerte","2010–11","#B48EE0"],lib:["Los libros","1997–2007","#9BC48A"],hoy:["Hoy","","#F1E6CC"]};
+/* Lugares [id, nombre, película, ll, qué fue, dirección, metro, acceso, curiosidad, fuente] */
+const P=[
+ ["kings","King's Cross: andén 9¾","p1",[51.53219,-0.12391],"La estación del Expreso de Hogwarts. Las escenas del andén se rodaron en el arco de ladrillo entre los andenes 4 y 5.","Euston Road, N1 9AP (vestíbulo oeste, hacia los andenes 9–11)","King's Cross St Pancras","Gratis, sin billete de tren. Tienda: L–S 8–22, D 9–20 (Navidad sin publicar). En hora punta la cola pasa de una hora.","Rowling contó en 2001 a la BBC que, al escribir, en realidad tenía en la cabeza la estación de Euston.","Historic UK · LNER"],
+ ["pancras","St Pancras Renaissance Hotel","p2",[51.5299,-0.1258],"La fachada de «King's Cross» de las películas. En «La cámara secreta», el Ford Anglia de los Weasley está aparcado en su explanada.","Euston Road, NW1 2AR","King's Cross St Pancras","Exterior y explanada libres; el interior es un hotel.","A los cineastas les pareció más «de cuento» que la fachada real de King's Cross, justo enfrente.","the-magician.co.uk"],
+ ["claremont","Claremont Square: Grimmauld Place","p5",[51.53113,-0.11001],"La plaza de Islington donde «aparece» la casa de los Black, entre dos casas georgianas.","Claremont Square, N1 9LY","Angel","Calle pública; casas particulares, solo exterior.","La fachada de la casa se recreó en estudio copiando estas casas.","movie-locations · the-magician"],
+ ["leaden","Leadenhall Market: el Callejón Diagon","p1",[51.51273,-0.0834],"El mercado victoriano por el que Hagrid lleva a Harry hacia el Caldero Chorreante. La puerta del pub es la de una óptica de Bull's Head Passage (se suele citar como el número 42).","Gracechurch Street, EC3V 1LT","Bank, Monument o Liverpool Street (Elizabeth line)","Pasajes públicos siempre abiertos. Entre Navidad y Año Nuevo, muchas tiendas cerradas.","El dueño de la óptica contó que la puerta funcionó en pantalla porque parecía vieja: el local no se había reformado.","Time Out"],
+ ["millen","Millennium Bridge","p6",[51.50989,-0.09851],"El puente que los mortífagos retuercen y destruyen al principio de «El misterio del príncipe».","Entre St Paul's y la Tate Modern","St Paul's, Mansion House o Blackfriars","Pasarela peatonal pública.","En el libro el puente es el ficticio Brockdale Bridge, y el Millennium no existía en los años de la historia: se inauguró en 2000.","movie-locations · Free Tours by Foot"],
+ ["stoney","7 Stoney Street: el Caldero de Azkaban","p3",[51.50514,-0.09087],"El Autobús Noctámbulo deja a Harry en el Caldero Chorreante, que en la tercera película está bajo el puente del tren de Borough Market. El número 8 fue la librería «Third Hand Book Emporium».","7–8 Stoney Street, SE1 9AA","London Bridge","Calle pública. Borough Market cierra del 25 al 27 de diciembre.","En la misma calle se rodaron «El diario de Bridget Jones» y «Lock, Stock and Two Smoking Barrels».","movie-locations"],
+ ["australia","Australia House: Gringotts","p1",[51.51287,-0.11559],"El vestíbulo de mármol y lámparas del banco de los duendes. La fachada de Gringotts era un decorado.","Strand, WC2B 4LA","Temple u Holborn","Solo exterior: es la Alta Comisión de Australia.","El mismo vestíbulo hizo de Kremlin en «X-Men: First Class» y de los almacenes Selfridges en «Wonder Woman».","movie-locations"],
+ ["cecil","Cecil Court","lib",[51.51073,-0.12766],"Un callejón de librerías de viejo que se cita como inspiración del Callejón Diagon. Aquí no se rodó.","Cecil Court, WC2N 4EZ","Leicester Square","Calle pública con tiendas.","La librería esotérica Watkins Books vende «sangre de dragón», una resina.","the-magician.co.uk"],
+ ["goodwin","Goodwin's Court","lib",[51.51095,-0.12633],"Un pasadizo con ventanas georgianas en mirador y farolas de gas, otra inspiración citada del Callejón Diagon o del callejón Knockturn.","Goodwin's Court, WC2N 4LL","Leicester Square","Pasaje público; la entrada es un hueco bajo un edificio de St Martin's Lane.","Las fachadas en mirador son del siglo XVIII y se conservan casi intactas.","the-magician.co.uk"],
+ ["charing","Charing Cross Road","lib",[51.513,-0.129],"En el libro, el Caldero Chorreante es un pub destartalado de esta calle, entre una librería y una tienda de discos. En «El misterio del príncipe», los mortífagos bajan por aquí hacia Great Newport Street.","Charing Cross Road, WC2","Leicester Square","Vía pública.","Es la calle de las librerías de Londres: encaja que el pub esté entre una librería y una tienda de discos.","HP Lexicon · movie-locations"],
+ ["denmark","Denmark Street: el café de Tottenham Court Road","p7",[51.51525,-0.1295],"Tras la boda, el trío huye a Tottenham Court Road y se mete en un café donde les atacan dos mortífagos. El interior fue un decorado; por la ventana se ve una tienda de instrumentos de esta calle.","Denmark Street, WC2H 8LZ","Tottenham Court Road (Elizabeth line directa)","Vía pública.","Denmark Street es la antigua «Tin Pan Alley», la calle de las tiendas de música.","movie-locations · Londonist"],
+ ["picca","Piccadilly Circus y Shaftesbury Avenue","p7",[51.51,-0.1345],"Hermione aparece con Harry y Ron delante del GAP y tienen que apartarse de un autobús de la línea 19.","1–7 Shaftesbury Avenue, W1D 7ET","Piccadilly Circus","Vía pública.","El edificio de la esquina fue el cine Eros de «Un hombre lobo americano en Londres».","movie-locations"],
+ ["palace","Palace Theatre: Cursed Child","hoy",[51.5131,-0.12984],"El teatro donde se representa desde 2016 la obra que continúa la historia.","113 Shaftesbury Avenue, W1D 5AY","Leicester Square o Tottenham Court Road","Con entrada (de 25 a 175 £).","Ganó 9 premios Olivier en 2017, un récord.","Wikipedia · Nimax"],
+ ["minalima","House of MinaLima","hoy",[51.51446,-0.13483],"Tienda y galería de los diseñadores gráficos de las películas: periódicos, el mapa del merodeador, las cartas de Hogwarts.","157 Wardour Street, W1F 8WQ","Tottenham Court Road u Oxford Circus","Gratis. A diario de 11:00 a 18:45, festivos incluidos (Navidad sin confirmar). Galería en el sótano, solo con escaleras.","Cumplió 10 años en junio de 2026; empezó en Greek Street.","minalima.com"],
+ ["trafalgar","Trafalgar Square","p7",[51.50808,-0.12804],"Aquí se celebró al aire libre, el 7 de julio de 2011, el estreno mundial de la última película. En «El misterio del príncipe», los mortífagos pasan junto a la columna de Nelson.","WC2N 5DN","Charing Cross","Plaza pública, con el abeto de Navidad de Oslo.","El estreno de 2011 fue el único de la saga al aire libre.","Wikipedia"],
+ ["gsy","Great Scotland Yard: la cabina del Ministerio","p5",[51.50638,-0.12559],"Harry y el señor Weasley entran al Ministerio por una cabina telefónica roja que hace de ascensor.","Great Scotland Yard, SW1A 2HJ","Embankment o Charing Cross","Calle pública. La cabina no existe: fue atrezo y se retiró tras el rodaje.","La calle también sale en «Expiación» (2007).","movie-locations · the-magician"],
+ ["scotland","Scotland Place: la emboscada","p7",[51.50615,-0.12562],"El trío reduce a tres empleados del Ministerio para quitarles la identidad con poción multijugos.","Scotland Place, SW1A 2HJ","Embankment","Calle pública.","Hermione aturde a Mafalda Hopkirk delante de las persianas metálicas.","movie-locations"],
+ ["horseg","Horse Guards Avenue: los «váteres»","p7",[51.50481,-0.12415],"Los empleados entran al Ministerio tirando de la cadena en unos aseos públicos subterráneos de atrezo.","Horse Guards Avenue, SW1A 2HU","Embankment o Westminster","Calle pública: en ese punto hay una estatua, no aseos.","El edificio de al lado es el Ministerio de Defensa real.","movie-locations"],
+ ["westminster","Estación de Westminster","p5",[51.501,-0.125],"Harry y el señor Weasley cruzan la estación camino de la vista disciplinaria; Arthur se asombra con los tornos.","Bridge Street, SW1A 2JR","Westminster (Jubilee, District, Circle)","Estación pública; para pasar los tornos hay que pagar.","TfL cerró la estación un día entero para el rodaje.","DNA/Reuters"],
+ ["lambeth","Lambeth Bridge: el Autobús Noctámbulo","p3",[51.49454,-0.12288],"El autobús morado de tres pisos se encoge para pasar entre dos autobuses de dos pisos.","Lambeth Bridge, SE1 7SG","Westminster o Pimlico","Puente público con acera.","El mismo puente sale en «Spectre» y, disfrazado de Moscú, en «Fast & Furious 6».","movie-locations"],
+ ["gherkin","The Gherkin","p6",[51.51448,-0.08037],"La Marca Tenebrosa aparece sobre la City en «El misterio del príncipe».","30 St Mary Axe, EC3A 8EP","Aldgate o Liverpool Street","Solo exterior.","Solo una de las fuentes consultadas lo cita: tomadlo con cautela.","the-magician.co.uk"],
+ ["zoo","London Zoo: Casa de los Reptiles","p1",[51.5353,-0.1534],"Harry habla con una boa y hace desaparecer el cristal del terrario; Dudley acaba dentro.","Outer Circle, Regent's Park, NW1 4RY","Camden Town o Regent's Park","Con entrada. En invierno, de 10:00 a 16:00; cerrado el 25.","Según una fuente, el terrario de la escena lo ocupa hoy una mamba negra.","Visit London · the-magician"],
+ ["crystal","The Crystal: el «nuevo» City Hall","hoy",[51.5075,0.0165],"En «El misterio del príncipe», unos oficinistas ven las señales en el cielo junto al antiguo City Hall. Desde 2021 el ayuntamiento de Londres está aquí, al lado de vuestro apartamento.","Royal Victoria Dock, E16","Royal Victoria (DLR)","Exterior.","El edificio de cristal inclinado de la película es el antiguo, junto a Tower Bridge.","london.gov.uk"]
+];
+const IDX={}; P.forEach((p,i)=>IDX[p[0]]=i);
+const ROUTES=[
+  {id:"A",t:"City y Southwark",km:"≈ 4 km · 55 min",how:"Ida: Elizabeth line hasta Liverpool Street (12 min). Vuelta: Jubilee desde London Bridge hasta Canning Town y DLR (25 min). Mejor el lunes 28 o el martes 29.",
+   st:[["gherkin","Vista exterior",""],["leaden","Callejón Diagon","4 min"],["millen","Por Cheapside y San Pablo","23 min"],["stoney","Por Bankside y Clink Street","17 min"]]},
+  {id:"B",t:"West End y Westminster",km:"≈ 5,5 km · 75 min",how:"Ida: Elizabeth line directa hasta Tottenham Court Road (20 min). Vuelta: Jubilee desde Westminster hasta Canning Town y DLR (30 min). Encaja con el domingo 27 por la mañana.",
+   st:[["denmark","El café del libro",""],["minalima","Abre a las 11:00","9 min"],["picca","GAP y Trocadero","10 min"],["palace","Cambridge Circus","12 min"],["charing","Hasta Great Newport Street","5 min"],["cecil","Librerías","2 min"],["goodwin","Farolas de gas","2 min"],["trafalgar","El abeto de Oslo","5 min"],["gsy","Cabina y multijugos","5 min"],["horseg","Los váteres","3 min"],["westminster","Por Whitehall","7 min"],["lambeth","Por Millbank","12 min"]]},
+  {id:"C",t:"King's Cross e Islington",km:"≈ 1,5 km · 20 min",how:"Encaja el martes 29: St Pancras es la estación del tren a Luton y tiene consigna de maletas.",
+   st:[["kings","Andén 9¾",""],["pancras","La fachada de las películas","3 min"],["claremont","Grimmauld Place","15 min"]]}
+];
+const TL=[
+ ["1990","Una idea en un tren","Rowling imagina a Harry en un tren de Manchester a King's Cross con cuatro horas de retraso.",0],
+ ["26 jun 1997","La piedra filosofal","Primer libro, publicado por Bloomsbury en Londres.",0],
+ ["1991","El zoo de Londres","Según la cronología canónica: visita a la Casa de los Reptiles por el cumpleaños de Dudley.",1],
+ ["31 jul 1991","El Caldero Chorreante","Hagrid lleva a Harry a Charing Cross Road y al Callejón Diagon.",1],
+ ["1 sep 1991","Andén 9¾","Primer viaje en el Expreso de Hogwarts desde King's Cross, a las 11:00.",1],
+ ["1993","El Autobús Noctámbulo","Harry cruza Londres de noche hasta el Caldero Chorreante.",1],
+ ["12 ago 1995","La vista en el Ministerio","Entrada de visitantes por la cabina roja de Whitehall.",1],
+ ["10 jun 2000","Millennium Bridge","Se inaugura, se balancea y lo cierran: reabre en 2002.",0],
+ ["4 nov 2001","Primer estreno","«La piedra filosofal» se estrena en el Odeon de Leicester Square.",0],
+ ["2006","Westminster cerrada","TfL cierra la estación un día para rodar «La Orden del Fénix».",0],
+ ["1996","El puente destruido","Los mortífagos destruyen el puente «Brockdale» (el Millennium, en la película).",1],
+ ["1 ago 1997","Tottenham Court Road","Tras la boda: huida, café y refugio en Grimmauld Place.",1],
+ ["21 jul 2007","Las reliquias de la Muerte","Último libro de la saga.",0],
+ ["7 jul 2011","Estreno en Trafalgar Square","Estreno mundial al aire libre de la última película.",0],
+ ["31 mar 2012","Studio Tour","Abren al público los estudios de Leavesden.",0],
+ ["30 jul 2016","Cursed Child","Estreno oficial en el Palace Theatre.",0],
+ ["1 sep 2017","El epílogo","Albus sale hacia Hogwarts desde King's Cross: así empieza la obra de teatro.",1],
+ ["9 oct 2026","Una sola parte","Cursed Child pasa a representarse en una sola obra de 2 h 55 min.",0],
+ ["14 nov 2026","Hogwarts in the Snow","Los estudios se visten de invierno hasta el 17 de enero.",0],
+ ["25 dic 2026","Nueva serie","Estreno en HBO de la serie basada en «La piedra filosofal», el día antes de vuestra llegada.",0]
+];
+const CUR=[
+ ["Las escenas del andén 9¾ se rodaron entre los andenes 4 y 5 de King's Cross: los 9 y 10 están en otra zona y no tienen un muro así.","the-magician"],
+ ["Hacerse la foto con el carrito del andén 9¾ es gratis; solo se paga la del fotógrafo de la tienda.","Time Out"],
+ ["El carrito empezó como un carrito cortado y fijado a la pared; en 2012 pasó al nuevo vestíbulo con baúles y jaula.","Londonist"],
+ ["La fachada de «King's Cross» de las películas es la de St Pancras, justo enfrente.","the-magician"],
+ ["En la tercera película el Caldero Chorreante se «muda» de Leadenhall a Stoney Street.","movie-locations"],
+ ["En Reliquias 2, el Gringotts que destroza el dragón se reconstruyó en estudio: el de verdad es una embajada.","the-magician"],
+ ["El Millennium Bridge se balanceaba tanto al inaugurarse que tardó dos años en reabrir.","movie-locations"],
+ ["La cabina roja del Ministerio nunca estuvo en Great Scotland Yard: era atrezo.","the-magician"],
+ ["El primer estreno de la saga, en 2001, fue en el Odeon de Leicester Square, con la fachada decorada como Hogwarts.","Reuters"],
+ ["Los estudios de Leavesden fueron un aeródromo y una fábrica de aviones en la II Guerra Mundial; en 1994 «GoldenEye» convirtió los hangares en platós.","Wikipedia"],
+ ["La maqueta de Hogwarts del Studio Tour está a escala 1:24 y se usó en los planos exteriores.","Wikipedia"],
+ ["La cerveza de mantequilla embotellada solo se vende en el Studio Tour, desde 2020.","Wikipedia"],
+ ["La obra de teatro empieza donde acaba el último libro: en King's Cross, diecinueve años después.","Wikipedia"],
+ ["El vestíbulo de Australia House también ha sido el Kremlin y los almacenes Selfridges en el cine.","movie-locations"],
+ ["Lambeth Bridge, el del Autobús Noctámbulo, sale también en «Spectre».","movie-locations"],
+ ["The Crystal, junto a vuestro apartamento, es el ayuntamiento de Londres desde 2021; el de la película es el antiguo, junto a Tower Bridge.","london.gov.uk"]
+];
+/* Dibujo de la locomotora (propio) */
+document.getElementById("heroCameo").innerHTML=cameo("wizard",{ink:"#0B1222",bg:"#E9DCB8",line:"#A89A78",gold:"#E8C772",accent:"#7A1F24"});
+/* KPIs */
+document.getElementById("kpis").innerHTML=[["23","lugares en Londres"],["8","películas rodadas en Leavesden"],["9¾","el andén más fotografiado"],["1:24","escala de la maqueta de Hogwarts"],["9","premios Olivier de Cursed Child"],["0","cabinas rojas reales en Great Scotland Yard"]].map(k=>'<div class="kpi"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>').join("");
+/* Mapa: proyección real sobre el centro de Londres */
+const LON0=-0.1600,LON1=-0.0720,LAT0=51.4920,LAT1=51.5380,KX=Math.cos(51.515*Math.PI/180);
+const SC=1000/((LON1-LON0)*KX), H=(LAT1-LAT0)*SC;
+document.getElementById("map").setAttribute("viewBox","0 0 1000 "+H.toFixed(0));
+const PR=ll=>[(ll[1]-LON0)*KX*SC,(LAT1-ll[0])*SC];
+const inB=ll=>ll[0]>LAT0&&ll[0]<LAT1&&ll[1]>LON0&&ll[1]<LON1;
+let sel="kings", film="all", routeSel=null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function drawMap(){
+  const K=Math.max(1,Math.min(2.6,620/(document.getElementById("map").clientWidth||620)));
+  const rv=THAMES.map(PR).map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
+  let h='<path class="river" d="'+rv+'"/><path class="river2" d="'+rv+'"/>';
+  [["Támesis",51.5085,-0.104],["Soho",51.5138,-0.1340],["La City",51.5160,-0.0920],["Westminster",51.4990,-0.1350],["Southwark",51.5000,-0.0960],["Islington",51.5345,-0.1040],["Bloomsbury",51.5225,-0.1240]].forEach(l=>{const p=PR([l[1],l[2]]); h+='<text class="lbl" style="font-size:'+(14*K)+'px" x="'+p[0]+'" y="'+p[1]+'" text-anchor="middle">'+l[0]+'</text>'});
+  if(routeSel){ const r=ROUTES.find(x=>x.id===routeSel); const pts=r.st.map(s=>PR(P[IDX[s[0]]][3])); h+='<polyline class="route" points="'+pts.map(p=>p.join(",")).join(" ")+'"/>'; }
+  P.forEach((p,i)=>{ if(!inB(p[3])) return; if(film!=="all"&&p[2]!==film) return; const q=PR(p[3]); const c=FILMS[p[2]][2];
+    h+='<g class="pin'+(sel===p[0]?" sel":"")+'" data-id="'+p[0]+'" tabindex="0" role="button" aria-label="'+esc(p[1])+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="'+(22*K)+'" fill="transparent"/><circle class="halo" cx="'+q[0]+'" cy="'+q[1]+'" r="'+(15*K)+'"/><circle class="dot" cx="'+q[0]+'" cy="'+q[1]+'" r="'+(10*K)+'" fill="'+c+'"/><text style="font-size:'+(10*K)+'px" x="'+q[0]+'" y="'+(q[1]+3.5*K)+'" text-anchor="middle">'+(i+1)+'</text></g>'; });
+  const m=document.getElementById("map"); m.innerHTML=h;
+  m.querySelectorAll(".pin").forEach(g=>{ g.onclick=()=>pick(g.dataset.id,false); g.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(g.dataset.id,false); } }; });
+}
+const PH={"kings":{"f":"img/kings.jpg","by":"WFan","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:20191103_King%27s_Cross_Platform_9_3-4.jpg"},"pancras":{"f":"img/stpancras.jpg","by":"Colin","lic":"CC BY-SA 3.0","url":"https://commons.wikimedia.org/wiki/File:St_Pancras_Railway_Station_2012-06-23.jpg"},"leaden":{"f":"img/leaden.jpg","by":"Doyle of London","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Leadenhall_Market,_City_of_London_(Interior_-_01).jpg"},"millen":{"f":"img/stpauls.jpg","by":"Philip Halling","lic":"CC BY-SA 2.0","url":"https://commons.wikimedia.org/wiki/File:Millennium_Bridge_and_St_Paul%27s_Cathedral_-_geograph.org.uk_-_7716660.jpg"},"trafalgar":{"f":"img/trafalgar.jpg","by":"Peter Trimming","lic":"CC BY-SA 2.0","url":"https://commons.wikimedia.org/wiki/File:Trafalgar_Square_Christmas_Tree_2009_-_the_first_picture%5E_-_geograph.org.uk_-_1604934.jpg"},"crystal":{"f":"img/excel.jpg","by":"TheFrog001","lic":"CC0","url":"https://commons.wikimedia.org/wiki/File:ExCeL_Marina,_looking_east_onto_Royal_Victoria_Dock,_2021.jpg"},"stoney":{"f":"img/borough.jpg","by":"Jeremy Keith from Brighton & Hove, United Kingdom","lic":"CC BY 2.0","url":"https://commons.wikimedia.org/wiki/File:Borough_Market_(4701274756).jpg"}};
+function dossier(){
+  const p=P[IDX[sel]], f=FILMS[p[2]], ph=PH[p[0]];
+  document.getElementById("dossier").innerHTML=(ph?'<figure class="dphoto"><img src="'+ph.f+'" alt="'+esc(p[1])+'" loading="lazy"><figcaption>Foto: <a href="'+ph.url+'" target="_blank" rel="noopener">'+esc(ph.by)+' · '+esc(ph.lic)+'</a> · Wikimedia Commons</figcaption></figure>':'')+'<span class="tag" style="color:'+f[2]+'">'+esc(f[0])+(f[1]?" · "+f[1]:"")+'</span><h3>'+esc(p[1])+'</h3><p style="font-style:italic;color:#D6CBB2">'+esc(p[4])+'</p>'+
+    '<dl><dt>Dónde</dt><dd>'+esc(p[5])+'</dd><dt>Metro</dt><dd>'+esc(p[6])+'</dd><dt>Acceso</dt><dd>'+esc(p[7])+'</dd></dl>'+
+    '<p style="border-left:2px solid var(--ember);padding-left:10px">'+esc(p[8])+'</p><span class="mono">Fuente: '+esc(p[9])+'</span>'+
+    '<div class="btns"><a class="btn pri" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+p[3][0]+','+p[3][1]+'&travelmode=transit">Cómo llegar</a><a class="btn" href="https://wa.me/?text='+encodeURIComponent("🪄 "+p[1]+"\n"+p[4]+"\nhttps://www.google.com/maps?q="+p[3][0]+","+p[3][1])+'" target="_blank" rel="noopener">Al grupo</a></div>'+
+    (inB(p[3])?'':'<p class="warnline">Fuera del mapa del centro.</p>');
+}
+function pick(id,scroll){ sel=id; drawMap(); dossier(); if(scroll) document.getElementById("cuadro").scrollIntoView({behavior:"smooth"}); }
+function seg(host,items,cur,cb){ const el=document.getElementById(host); el.innerHTML=items.map(i=>'<button type="button" data-v="'+i[0]+'" class="'+(i[0]===cur?"on":"")+'">'+esc(i[1])+'</button>').join(""); el.querySelectorAll("button").forEach(b=>b.onclick=()=>cb(b.dataset.v)); }
+function filters(){
+  const items=[["all","Todos"]].concat(Object.keys(FILMS).map(k=>[k,FILMS[k][0].replace(/^La |^El |^Los |^Las /,"")]));
+  seg("mapFilter",[["all","Todos"],["A","Ruta A"],["B","Ruta B"],["C","Ruta C"]],routeSel||"all",v=>{ routeSel=v==="all"?null:v; film="all"; filters(); drawMap(); });
+  seg("cardFilter",items,film,v=>{ film=v; routeSel=null; filters(); drawMap(); cards(); });
+}
+function cards(){
+  document.getElementById("cards").innerHTML=P.map((p,i)=>({p,i})).filter(o=>film==="all"||o.p[2]===film).map(o=>{ const p=o.p,f=FILMS[p[2]];
+    return '<article class="card" data-id="'+p[0]+'" tabindex="0"><span class="n">'+(o.i+1)+'</span><span class="tag" style="color:'+f[2]+'">'+esc(f[0])+'</span><h3>'+esc(p[1])+'</h3><p class="what">'+esc(p[4])+'</p><span class="meta">'+esc(p[6])+' · '+esc(p[5])+'</span><p class="cur">'+esc(p[8])+'</p></article>'; }).join("");
+  document.querySelectorAll("#cards .card").forEach(c=>{ c.onclick=()=>pick(c.dataset.id,true); c.onkeydown=e=>{ if(e.key==="Enter") pick(c.dataset.id,true); }; });
+}
+document.getElementById("legend").innerHTML=Object.keys(FILMS).map(k=>'<span><i style="background:'+FILMS[k][2]+'"></i>'+esc(FILMS[k][0])+'</span>').join("");
+document.getElementById("routes").innerHTML=ROUTES.map(r=>'<div class="panel route-c"><span class="mono">Ruta '+r.id+' · '+r.km+'</span><h3>'+esc(r.t)+'</h3><ol>'+r.st.map(s=>'<li><span>'+esc(P[IDX[s[0]]][1])+'<br><small style="white-space:normal">'+esc(s[1])+'</small></span><small>'+esc(s[2])+'</small></li>').join("")+'</ol><p class="how">'+esc(r.how)+'</p><div class="btns"><button class="btn pri" type="button" data-r="'+r.id+'">Ver en el mapa</button></div></div>').join("");
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{ routeSel=b.dataset.r; film="all"; filters(); pick(ROUTES.find(x=>x.id===routeSel).st[0][0],true); });
+document.getElementById("studioBox").innerHTML=
+ '<div class="panel info"><span class="mono">Hogwarts in the Snow · 14 nov 2026 – 17 ene 2027</span><h3>Qué veréis</h3><ul><li>El Gran Comedor con banquete de Navidad y la partida de ajedrez mágico.</li><li>Salas comunes decoradas y el aula con la lección de vals del Baile de Navidad.</li><li>El Bosque Prohibido escarchado y escaparates helados en el Callejón Diagon.</li><li>La maqueta de Hogwarts nevada, con un muñeco de nieve escondido.</li><li>Novedades de 2026: charla de efectos de sonido, bar de cerveza de mantequilla y nieve de cine en el Backlot.</li></ul><p class="mono">Visita media: 3 h 30 min, sin límite de tiempo</p></div>'+
+ '<div class="panel info"><span class="mono">Entradas y transporte</span><h3>Cómo encajarlo</h3><ul><li><b>Solo con entrada y hora</b>, que se agotan semanas o meses antes en Navidad. Adulto 58,50 £; paquete con autobús desde el centro, desde 94 £.</li><li>Según fuentes no oficiales, <b>cierra el 25 y el 26</b> y abre el 27 (calendario oficial de diciembre aún sin publicar).</li><li>Desde ExCeL: Elizabeth y Northern line hasta Euston, tren a Watford Junction (20 min, vale el contactless) y lanzadera gratuita (15 min). Unos 90 minutos.</li><li><b>Guardarropa gratuito</b> para abrigos, bolsas y maletas (pasan por escáner).</li></ul>'+
+ '<div class="days"><div><b>Dom 27</b><span>No: el partido es en el otro extremo de Londres.</span></div><div><b>Lun 28</b><span>El mejor día: tour a media mañana.</span></div><div><b>Mar 29</b><span>Viable con maletas; de allí a Luton, 30–40 min en taxi.</span></div></div>'+
+ '<div class="btns"><a class="btn pri" href="https://www.wbstudiotour.co.uk/tickets" target="_blank" rel="noopener">Comprobar entradas</a></div></div>';
+document.getElementById("theatreBox").innerHTML=
+ '<div class="panel info"><span class="mono">Palace Theatre · 113 Shaftesbury Avenue</span><h3>La obra</h3><ul><li>Desde octubre de 2026, <b>una sola parte de 2 h 55 min</b> con descanso.</li><li>Recomendada desde 8 años.</li><li>Entradas de 25 a 175 £, y lotería de entradas a 40 £ para la semana siguiente.</li></ul></div>'+
+ '<div class="panel info"><span class="mono">Funciones del 26 al 29</span><h3>Por confirmar</h3><ul><li>La web oficial anuncia funciones especiales de Navidad, aún sin horario publicado.</li><li>Con el horario habitual: sábado 13:00 y 19:00, domingo 14:30, lunes sin función, martes 19:00 (la web habla de 19:30).</li><li>El domingo a las 14:30 choca con el fútbol de las 19:00 en Selhurst Park: muy justo.</li></ul><div class="btns"><a class="btn pri" href="https://uk.harrypottertheplay.com/" target="_blank" rel="noopener">Web oficial</a></div></div>';
+let tlMode="all";
+function drawTL(){
+  seg("tlFilter",[["all","Todo"],["real","Mundo real"],["story","En la historia"]],tlMode,v=>{tlMode=v; drawTL();});
+  document.getElementById("timeline").innerHTML=TL.filter(t=>tlMode==="all"||(tlMode==="story")===!!t[3]).map(t=>'<li class="'+(t[3]?"story":"")+'"><span class="y">'+esc(t[0])+'</span><b>'+esc(t[1])+'</b><p>'+esc(t[2])+'</p></li>').join("");
+}
+document.getElementById("curiosList").innerHTML=CUR.map(c=>'<li>'+esc(c[0])+' <a>'+esc(c[1])+'</a></li>').join("");
+/* Pestañas activas al hacer scroll */
+const tabs=[...document.querySelectorAll("nav.tabs a")];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ tabs.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); const on=tabs.find(a=>a.classList.contains("on")); if(on) on.scrollIntoView({block:"nearest",inline:"nearest"}); } }),{rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>obs.observe(s));
+filters(); drawMap(); dossier(); cards(); drawTL();
+let rz=0; window.addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(drawMap,150); });
+})();
+</script>
+</body>
+</html>

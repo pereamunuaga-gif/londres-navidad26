@@ -1,0 +1,13 @@
+{
+ "v": 1,
+ "updatedAt": "2026-11-23T12:00:00.000Z",
+ "updatedBy": "",
+ "notice": null,
+ "route": {
+  "2026-12-26": ["traslado","checkin","tesco","cable","cenacasa"],
+  "2026-12-27": ["bigben","horseg","m_scotland","trafalgar","gf_indigo","covent","gf_copains","regent","hamleys","snackfutbol","futbol"],
+  "2026-12-28": ["tower","tbridge","m_leaden","gf_mochis","stpauls","m_millen","j_ruta","gf_wickedfish","winterw"],
+  "2026-12-29": ["checkout","m_kings","m_stpancras","borough","m_stoney","gf_freefrom","tate","gf_paladar","alluton"]
+ },
+ "trip": {"hotel":"Apartamento junto a ExCeL","hotelAddr":"","aptLL":"","checkin":"Desde las 15:00","checkout":"Hasta las 11:00","transfer":"","out":"","back":"","wa":""}
+}
