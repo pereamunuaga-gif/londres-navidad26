@@ -1,0 +1,111 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Londres 26//Navidad//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Londres 26
+X-WR-TIMEZONE:Europe/London
+BEGIN:VEVENT
+UID:vuelo-ida@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261226T114000Z
+DTEND:20261226T141500Z
+SUMMARY:Vuelo W9 5372 · Madrid T1 → Londres Luton
+LOCATION:Aeropuerto Adolfo Suárez Madrid-Barajas T1
+DESCRIPTION:Sale a las 12:40 (hora española) y aterriza a las 14:15 (hora
+  de Londres).\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Vuelo W9 5372 · Madrid T1 → Londres Luton
+TRIGGER:-PT120M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:traslado@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261226T150000Z
+DTEND:20261226T163000Z
+SUMMARY:Minibús Luton → apartamento
+LOCATION:London Luton Airport
+DESCRIPTION:Boxing Day: no hay trenes desde Luton. Minibús de 8 plazas re
+ servado.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Minibús Luton → apartamento
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:checkin@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261226T163000Z
+DTEND:20261226T170000Z
+SUMMARY:Check-in en el apartamento
+LOCATION:Royal Victoria DLR\, London E16
+DESCRIPTION:Entrada desde las 15:00.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Check-in en el apartamento
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:futbol@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261227T190000Z
+DTEND:20261227T210000Z
+SUMMARY:Cena de domingo: «Sunday roast» en un pub del sur de Londres
+LOCATION:London Bridge Station\, London
+DESCRIPTION:Mesa reservada por Javier. Salid del centro hacia las 17:15 po
+ r London Bridge.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Cena de domingo: «Sunday roast» en un pub del sur de Londres
+TRIGGER:-PT120M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:checkout@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261229T103000Z
+DTEND:20261229T110000Z
+SUMMARY:Check-out del apartamento
+LOCATION:Royal Victoria DLR\, London E16
+DESCRIPTION:Como tarde a las 11:00.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Check-out del apartamento
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:tren-luton@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261229T183000Z
+DTEND:20261229T193000Z
+SUMMARY:Tren a Luton desde St Pancras
+LOCATION:St Pancras International\, London
+DESCRIPTION:Recoger las maletas\, Thameslink a Luton Airport Parkway y DAR
+ T a la terminal.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tren a Luton desde St Pancras
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:vuelo-vuelta@londres26
+DTSTAMP:20261123T141422Z
+DTSTART:20261229T213000Z
+DTEND:20261230T001000Z
+SUMMARY:Vuelo W4 5373 · Londres Luton → Madrid T1
+LOCATION:London Luton Airport
+DESCRIPTION:Sale a las 21:30 y llega a la 01:10 (hora española). Comproba
+ d el código del vuelo en la reserva.\nLondres · Navidad 2026
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Vuelo W4 5373 · Londres Luton → Madrid T1
+TRIGGER:-PT120M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
