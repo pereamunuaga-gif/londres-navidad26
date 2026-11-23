@@ -3,7 +3,7 @@
    - Las páginas (index, jack, magia) y la ruta (ruta.json): primero red; si no hay, la copia guardada.
    - Iconos y tipografías: copia guardada, y se refresca en segundo plano.
    - GitHub (publicar o leer la ruta en directo) nunca pasa por aquí. */
-const CACHE = "ldn26-v6";
+const CACHE = "ldn26-v7";
 const CORE = ["./", "index.html", "jack.html", "magia.html", "manifest.webmanifest", "favicon.svg", "fonts/fonts.css", "app.css",
   "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png",
   "img/bigben.jpg", "img/leech_marley.jpg", "img/leech_fezziwig.jpg", "img/borough.jpg", "img/cable.jpg", "img/carnaby.jpg", "img/covent.jpg", "img/dickens.jpg", "img/excel.jpg", "img/eye.jpg", "img/greenwich.jpg", "img/hamleys.jpg", "img/hero.jpg", "img/kings.jpg", "img/leaden.jpg", "img/regent.jpg", "img/selhurst.jpg", "img/somerset.jpg", "img/stpancras.jpg", "img/stpauls.jpg", "img/tbridge.jpg", "img/tower.jpg", "img/trafalgar.jpg", "img/whitechapel.jpg", "img/winterw.jpg"];

@@ -99,6 +99,7 @@
     <div class="keys" id="keys"></div>
   </div>
   <div class="row"><button class="btn ghost" id="tutCta" type="button">Cómo usar esta edición →</button><button class="btn ghost" id="skinCta" type="button"></button></div>
+  <div class="card secret" id="secretNote" hidden></div>
 </section>
 
 <!-- 02 · PROGRAMA -->
@@ -1045,6 +1046,17 @@ const me=()=>S.person;
 const isCommander=()=>COMMANDERS.indexOf(S.person)>=0;
 const canEdit=()=>isCommander()&&!!S.token;
 const isMarta=()=>S.person===GF_PERSON;
+/* SORPRESA: Manuel y Alfredo no saben que vamos al fútbol. Para ellos (y mientras nadie ha elegido perfil)
+   el partido se disfraza de cena de domingo; el resto ve el partido y un aviso al final de la Portada.
+   Lo que se envía al grupo de WhatsApp (ellos están dentro) sale siempre disfrazado. */
+const SURPRISE=["Manuel","Alfredo"];
+const inSecret=()=>!!S.person&&SURPRISE.indexOf(S.person)<0;
+const DECOY={n:"Cena de domingo: «Sunday roast» en un pub del sur de Londres",pp:"Mesa reservada",dur:"2 h",
+  t:"19:00 · Mesa reservada por Javier",q:"London Bridge Station, London",
+  tip:"La cena más británica del domingo: asado con «Yorkshire pudding», patatas asadas y salsa «gravy». Javier tiene la mesa y os guía: salid del centro hacia las 17:15 por London Bridge. Ropa de abrigo y tarjeta: muchos pubs ya no aceptan efectivo."};
+/* Copia «presentable» de una parada para los mensajes al grupo */
+const pubIt=it=>it&&it.id==="futbol"?Object.assign({},it,{n:DECOY.n,q:DECOY.q,fixed:Object.assign({},it.fixed,{t:DECOY.t})}):
+  it&&it.id==="snackfutbol"?Object.assign({},it,{n:"Algo sin gluten para Marta para la noche",q:DECOY.q}):it;
 function plan(){
   let p;
   if(canEdit()){ if(!S.draft) S.draft=clone((S.official&&S.official.route)||ROUTE0); p=S.draft; }
@@ -1150,7 +1162,7 @@ function openWho(){
       skinSwitchHTML()+'<button class="btn primary" id="whoOk" type="button" '+(sel?"":"disabled")+'>Entrar</button></div></div>';
     $("#modalHost").querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{sel=b.dataset.p; draw()});
     wireSkin($("#modalHost"),draw);
-    $("#whoOk").onclick=()=>{ if(!sel) return; S.person=sel; save(); $("#modalHost").innerHTML=""; render(); toast("Hello, "+sel+"!"); if(!S.tutSeen) openTut(0); };
+    $("#whoOk").onclick=()=>{ if(!sel) return; const was=inSecret(); S.person=sel; save(); if(was!==inSecret()){ location.reload(); return; } $("#modalHost").innerHTML=""; render(); toast("Hello, "+sel+"!"); if(!S.tutSeen) openTut(0); };
   };
   draw();
 }
@@ -1180,11 +1192,12 @@ function render(){
 /* WhatsApp y tablón de avisos */
 const waLink=t=>"https://wa.me/?text="+encodeURIComponent(t);
 function stopText(d,i,it,leg,legFrom){
+  it=pubIt(it);
   return "📍 "+DAYS[d].label+" · parada "+(i+1)+": "+it.n+(it.fixed?" ("+it.fixed.t+")":"")+(leg?"\n🚶 "+legFrom+": "+leg:"")+"\n"+gmaps(it.q||it.n);
 }
 function dayText(d){
-  const ids=(plan()[d]||[]).filter(id=>IT[id]);
-  return "🎄 Londres · "+DAYS[d].label.toLowerCase()+" "+MONTH+"\n"+(ids.length?ids.map((id,i)=>(i+1)+". "+IT[id].n+(IT[id].fixed&&IT[id].fixed.h?" · "+IT[id].fixed.h:"")).join("\n"):"Día libre")+"\nEntradas: "+money(dayCost(d))+" por persona";
+  const ids=(plan()[d]||[]).filter(id=>IT[id]&&id!=="snackfutbol");
+  return "🎄 Londres · "+DAYS[d].label.toLowerCase()+" "+MONTH+"\n"+(ids.length?ids.map((id,i)=>(i+1)+". "+pubIt(IT[id]).n+(IT[id].fixed&&IT[id].fixed.h?" · "+IT[id].fixed.h:"")).join("\n"):"Día libre")+"\nEntradas: "+money(dayCost(d))+" por persona";
 }
 function renderNotice(){
   const n=S.official&&S.official.notice;
@@ -1232,12 +1245,18 @@ function renderInicio(){
     '<div class="row"><button class="btn primary small" type="button" id="gfHomeCard">Tarjeta para el camarero</button><a class="btn small" href="#singluten">Ver los sitios</a></div>';
   $("#gfHomeCard").onclick=showGFCard;
   const f=IT.futbol;
-  $("#mtgCard").innerHTML='<div class="row" style="justify-content:space-between"><span class="eyebrow">El partido · Domingo 27</span><span class="pill">Selhurst Park</span></div>'+
+  $("#mtgCard").hidden=!inSecret();
+  if(inSecret()) $("#mtgCard").innerHTML='<div class="row" style="justify-content:space-between"><span class="eyebrow">El partido · Domingo 27</span><span class="pill">Selhurst Park</span></div>'+
     '<div class="match"><div><b>Crystal Palace</b><small>Local</small></div><div class="vs">vs</div><div><b>Arsenal</b><small>Visitante</small></div></div>'+
     '<span>19:00 · Premier League · Sky Sports. Salid del centro hacia las 17:15 por London Bridge o Whitechapel, nunca por Victoria (obras).</span>'+
     '<span>Estadio sin efectivo · bolsas como máximo A4 · llevad comida sin gluten para Marta.</span>'+
     '<div class="row" style="margin-top:6px"><a class="btn small" href="'+gmaps(f.q)+'" target="_blank" rel="noopener">Cómo llegar</a><button class="btn small" type="button" id="mtgPlan">Ver el domingo</button></div>';
-  $("#mtgPlan").onclick=()=>{ setDay("2026-12-27"); show("plan"); };
+  if(inSecret()) $("#mtgPlan").onclick=()=>{ setDay("2026-12-27"); show("plan"); };
+  const sn=$("#secretNote"); sn.hidden=!inSecret();
+  sn.innerHTML=inSecret()?'<div class="eyebrow">🤫 Secreto · Solo para '+esc(TRAVELLERS.filter(n=>SURPRISE.indexOf(n)<0).join(", ").replace(/, ([^,]*)$/," y $1"))+'</div>'+
+    '<h3>Manuel y Alfredo no saben lo del fútbol</h3>'+
+    '<p>El Palace – Arsenal del domingo es una sorpresa para ellos. En su app, el domingo 27 a las 19:00 aparece como <b>'+esc(DECOY.n)+'</b>, con la mesa «reservada por Javier» y salida del centro hacia las 17:15 por London Bridge.</p>'+
+    '<p><b>Esa es la excusa</b> si preguntan: cena de domingo en un pub. Ni una palabra en el grupo de WhatsApp (están dentro). Lo que enviéis desde la app al grupo ya sale con la cena, no con el partido.</p>':"";
   const today=new Date().toISOString().slice(0,10);
   const next=dates.find(d=>d>=today)||dates[0]; const ids=plan()[next]||[];
   $("#nextDay").innerHTML='<div class="row" style="justify-content:space-between;border-top:1px solid var(--ink);padding-top:10px"><h3 style="font-style:italic;font-weight:400;font-size:2rem">'+DAYS[next].label+' '+MONTH+'</h3></div>'+
@@ -2352,7 +2371,7 @@ function buildICS(){
    Si Javier cambia las citas con hora, hay que regenerarlo (ver CLAUDE.md). */
 const CAL_DATE="23 de noviembre";
 function addToCalendar(){
-  const file="cal/londres26.ics";
+  const file=inSecret()?"cal/londres26-a.ics":"cal/londres26.ics";
   const abs=new URL(file,location.href).href, webcal=abs.replace(/^https?:/,"webcal:");
   const ua=navigator.userAgent, iOS=/iP(hone|ad|od)/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1), android=/Android/i.test(ua);
   const gcal="https://calendar.google.com/calendar/render?cid="+encodeURIComponent(webcal);
@@ -2367,7 +2386,7 @@ function addToCalendar(){
     '<p class="caltip">Ábrelo con Outlook, Calendario de Apple o el que uses: añadirá todas las citas con sus avisos.</p>';
   $("#sheetHost").innerHTML='<div class="sheet-bg" id="sbg"></div><div class="sheet calsheet" role="dialog" aria-modal="true" aria-labelledby="shT">'+
     '<div class="sheet-h"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><div><div class="eyebrow">Calendario</div><h2 id="shT">Añadir al calendario</h2></div><button class="icon" id="shX" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>'+
-    '<div class="sheet-b"><p class="lede" style="font-size:.95rem">Incluye los vuelos y las citas con hora (minibús, fútbol, tren a Luton), con aviso 30 minutos antes (2 horas antes de los vuelos), en hora de Londres. Ruta a '+CAL_DATE+'; si Javier la cambia, os avisará en la app.</p>'+body+'</div></div>';
+    '<div class="sheet-b"><p class="lede" style="font-size:.95rem">Incluye los vuelos y las citas con hora (minibús, '+(inSecret()?"fútbol":"cena del domingo")+', tren a Luton), con aviso 30 minutos antes (2 horas antes de los vuelos), en hora de Londres. Ruta a '+CAL_DATE+'; si Javier la cambia, os avisará en la app.</p>'+body+'</div></div>';
   const close=()=>{$("#sheetHost").innerHTML=""};
   $("#sbg").onclick=close; $("#shX").onclick=close;
 }
@@ -2413,7 +2432,7 @@ function ago(t){ const m=Math.round((Date.now()-t)/60000); return m<2?"ahora mis
 function wxAdvice(){
   const tips=[];
   if(!WX){
-    tips.push(["Abrigo","Ropa de abrigo y por capas: por la noche se pasan horas al aire libre (luces, Winter Wonderland, fútbol)."]);
+    tips.push(["Abrigo","Ropa de abrigo y por capas: por la noche se pasan horas al aire libre (luces, Winter Wonderland, la noche del domingo)."]);
     tips.push(["Paraguas","Uno plegable siempre: en diciembre llueve unos 11 días de cada 31."]);
     tips.push(["Calzado","Cómodo e impermeable: se camina mucho y las calles mojadas resbalan."]);
   } else {
@@ -2491,8 +2510,8 @@ function renderAjustes(){
 /* Grupo: compartir en un toque y quién es quién */
 function nextShareText(){
   const now=new Date(), e=timedEvents().find(x=>x.e>now); if(!e) return "El viaje ha terminado. ¡Gracias por todo! 🇬🇧";
-  const it=e.id?IT[e.id]:null;
-  return "⏰ Lo siguiente: "+e.n+"\n"+(DAYS[e.d]?DAYS[e.d].label+" "+MONTH:e.d)+" · "+e.t+(it&&it.q?"\n📍 "+gmaps(it.q):"");
+  const it=e.id?pubIt(IT[e.id]):null;
+  return "⏰ Lo siguiente: "+(it?it.n:e.n)+"\n"+(DAYS[e.d]?DAYS[e.d].label+" "+MONTH:e.d)+" · "+e.t+(it&&it.q?"\n📍 "+gmaps(it.q):"");
 }
 function renderGrpExtra(){
   const tr=trip(), d=curDay(), app=location.origin+location.pathname, ap=APT();
@@ -2534,6 +2553,29 @@ document.addEventListener("click",e=>{
   setTimeout(()=>toast("Mensaje copiado: en el grupo, mantén pulsado y elige «Pegar»"),50);
 });
 
+/* Sorpresa: disfraz del partido (ver SURPRISE) */
+if(!inSecret()){
+  const f=IT.futbol;
+  Object.assign(f,{n:DECOY.n,pp:DECOY.pp,dur:DECOY.dur,tip:DECOY.tip,q:DECOY.q,football:false});
+  f.fixed=Object.assign({},f.fixed,{e:"21:00",t:DECOY.t});
+  delete ART_BY_ITEM.futbol; delete PHOTOS.selhurst;
+  const si=ITEMS.indexOf(IT.snackfutbol); if(si>=0) ITEMS.splice(si,1); delete IT.snackfutbol;
+  ROUTE0["2026-12-27"]=ROUTE0["2026-12-27"].filter(x=>x!=="snackfutbol");
+  DAY_NOTES["2026-12-27"]=DAY_NOTES["2026-12-27"].filter(n=>!/Fútbol|Estadio/.test(n[1]));
+  DAY_NOTES["2026-12-27"].push(["ok","Por la noche, cena de domingo («Sunday roast») con mesa reservada por Javier. Salid del centro hacia las 17:15 por London Bridge y evitad la estación Victoria (obras)."]);
+  const k=KEYS.findIndex(x=>x[0]==="ball"); if(k>=0) KEYS[k]=["lamp","Domingo de pub","Por la noche, cena de domingo con mesa reservada por Javier: el «Sunday roast», lo más británico del fin de semana."];
+  APPS.forEach(a=>{ a[1]=a[1].replace("Trenes a Luton y a Selhurst","Trenes a Luton"); });
+  for(let i=GF_XMAS.length-1;i>=0;i--) if(/Selhurst|estadio/.test(GF_XMAS[i][0]+GF_XMAS[i][1])) GF_XMAS.splice(i,1);
+  for(let i=GUIDE.length-1;i>=0;i--){
+    if(/^Fútbol/.test(GUIDE[i][0])){ GUIDE.splice(i,1); continue; }
+    GUIDE[i][1]=GUIDE[i][1].replace(/<li><b>Domingo 27, para el fútbol:<\/b>.*?<\/li>/,"").replace("el estadio y muchos puestos","muchos pubs y puestos");
+  }
+  HOLI.forEach(h=>{ h[2]=h[2].replace(" Fútbol a las 19:00."," Cena de domingo a las 19:00."); });
+  const pc=PCATS.findIndex(c=>c[0]==="foot"); if(pc>=0) PCATS.splice(pc,1);
+  for(let i=PHRASES.length-1;i>=0;i--) if(PHRASES[i][0]==="foot") PHRASES.splice(i,1);
+  TUT.forEach(p=>{ p.items=p.items.filter(x=>!/partido/.test(x[0])); p.items.forEach(x=>{ x[0]=x[0].replace("(vuelos, minibús, fútbol)","(vuelos, minibús, cena del domingo)"); }); });
+}
+
 /* Arranque */
 applySkin();
 document.querySelectorAll("#tabbar [data-tb]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.tb)));
@@ -2542,7 +2584,7 @@ $("#skinBtn").addEventListener("click",()=>setSkin(skin()==="noche"?"victoriana"
 buildPlates();
 const h0=location.hash.slice(1);
 show(VIEWS.indexOf(h0)>=0?h0:(S.tab||"inicio"));
-if(!S.person) openWho();
+if(!S.person) openWho(); else if(!S.tutSeen) openTut(0);
 refreshRoute(true);
 $("#hotelBtn").addEventListener("click",openHotel);
 $("#hotelBtn2").addEventListener("click",openHotel);

@@ -1018,3 +1018,9 @@ main{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
 .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 @media (max-width:360px){.tabbar button{font-size:.64rem!important}}
 @media (max-width:460px){#helpBtn{display:none}.idxlbl{display:none}.idxbtn{padding-right:4px}}
+
+/* Sorpresa del fútbol: aviso al final de la Portada (solo para quien está en el secreto) */
+.mtg[hidden],.secret[hidden]{display:none!important}
+.card.secret{border:1.5px dashed var(--accent,#8E1B1B);background:linear-gradient(0deg,rgba(142,27,27,.06),rgba(142,27,27,.06))}
+.card.secret h3{font-style:italic;font-weight:400;font-size:1.5rem;margin:4px 0 6px}
+.card.secret p{font-size:.95rem;line-height:1.5;margin:6px 0 0}
